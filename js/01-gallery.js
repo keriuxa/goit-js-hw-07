@@ -17,11 +17,23 @@ galerry.innerHTML = imagesGalery;
 
 const createModal = (event) => {
 event.preventDefault()
+
   if (event.target.nodeName!== "IMG"){
     return
   }
-const instance = basicLightbox.create(` <img src="${event.target.dataset.source}" >`)
-instance.show()
+const instance = basicLightbox.create(` <img src="${event.target.dataset.source}" >`, {
+  onShow:(instance) =>{
+document.addEventListener('keydown', (event) =>{
+  if(event.code === 'Escape'){
+    instance.close()
+ }
+} )
+  }
 }
-galerry.addEventListener("click", createModal)
+  )
+instance.show()
 
+}
+
+
+galerry.addEventListener("click", createModal)
