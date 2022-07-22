@@ -13,24 +13,24 @@ const imagesGalery = galleryItems.map(item =>
 )
 .join('')
 
+
 galerry.innerHTML = imagesGalery;
 
 const createModal = (event) => {
 event.preventDefault()
-
+const onEscButton = (event) =>{
+  if(event.code === 'Escape'){
+    instance.close() }
+}
   if (event.target.nodeName!== "IMG"){
     return
   }
 const instance = basicLightbox.create(` <img src="${event.target.dataset.source}" >`, {
-  onShow:(instance) =>{
-document.addEventListener('keydown', (event) =>{
-  if(event.code === 'Escape'){
-    instance.close()
- }
-} )
-  }
-}
-  )
+  onShow:(instance) =>
+document.addEventListener('keydown', onEscButton)
+}, {
+    onClose: (instance) => 
+    document.removeEventListener('keydown',onEscButton)
 instance.show()
 
 }
