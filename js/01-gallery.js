@@ -31,6 +31,7 @@ document.addEventListener('keydown', onEscButton)
 }, {
     onClose: (instance) => 
     document.removeEventListener('keydown',onEscButton)
+}
 instance.show()
 
 }
