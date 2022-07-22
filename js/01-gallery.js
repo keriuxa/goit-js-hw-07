@@ -30,8 +30,9 @@ const instance = basicLightbox.create(` <img src="${event.target.dataset.source}
 document.addEventListener('keydown', onEscButton)
 }, {
     onClose: (instance) => 
-    document.removeEventListener('keydown',onEscButton)
+    document.removeEventListener('keydown', onEscButton)
 }
+)
 instance.show()
 
 }
